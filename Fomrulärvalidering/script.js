@@ -18,12 +18,27 @@ function validateForm() {
     const movieRef = document.querySelector('#movie');
 
     try {
+        // console.log(jesper)
         if(nameRef.value.length < 5) {
-            throw new Error('Name must be at least 5 characters');
+            throw {
+                message : 'Name must be at least 5 characters',
+                nodeRef : nameRef
+            }
+
+            // throw new Error('Name must be at least 5 characters');
         } else if(!emailRef.value.includes('@')) {
-            throw new Error('Enter a valid email address');
+            throw {
+                message : 'Enter a valid email address',
+                nodeRef : emailRef
+            }
+            // throw new Error('Enter a valid email address');
         } else if(movieRef.value === '') {
-            throw new Error('You must choose a movie');
+            throw {
+                message : 'You must choose a movie',
+                nodeRef : movieRef
+            }
+
+            // throw new Error('You must choose a movie');
         }
         document.querySelector('#errorMsg').textContent = '';
         nameRef.value = '';
@@ -32,6 +47,8 @@ function validateForm() {
         return true;
     } catch(error) {
         console.log(error.message);
+        error.nodeRef.value = '';
+        error.nodeRef.focus();
         document.querySelector('#errorMsg').textContent = error.message;
         return false;
     }

@@ -1,8 +1,14 @@
 const log = (msg) => console.log(msg);
 
 log(pokemons);
+if(window.location.pathname === '/') {
+    pageSetup();
+} else if(window.location.pathname === '/singlePokemon.html') {
+    log('Hejsan från single pokemon');
+    let pokemon = JSON.parse(localStorage.getItem('activePokemon'));
+    log(pokemon.name);
+}
 
-pageSetup();
 
 function pageSetup() {
     log('pageSetup()');
@@ -57,7 +63,12 @@ function setupPokedex() {
 
 function createCard(pokemon) {
     log('createCard()');
-    const cardRef = document.createElement('article');
+    const cardRef = document.createElement('a');
+    cardRef.addEventListener('click', () => {
+        localStorage.setItem('activePokemon', JSON.stringify(pokemon));
+    });
+    cardRef.href = '/singlePokemon.html';
+    cardRef.classList.add('card-link');
     cardRef.classList.add('card');
 
     let divRef = document.createElement('div');
