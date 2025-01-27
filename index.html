@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./script.js"></script>
+    <title>Formulärvalidering och felhantering</title>
+  </head>
+  <body>
+    <form>
+      <p id="errorMsg"></p>
+      <label>
+        Name:
+        <input id="name" type="text" />
+      </label>
+      <label>
+        Email:
+        <input id="email" type="text" />
+      </label>
+      <label>
+        Favorite Movie:
+        <select name="movie" id="movie">
+          <option value="">Choose a movie</option>
+          <option value="Wicked">Wicked</option>
+          <option value="Transformers One">Transformers One</option>
+          <option value="Sonic 3">Sonic 3</option>
+          <option value="Vaiana 2">Vaiana 2</option>
+        </select>
+      </label>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
